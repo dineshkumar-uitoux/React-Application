@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Button, Form, Input,Label,FormGroup, Modal,ModalHeader,ModalBody,ModalFooter } from 'reactstrap';
-
+import { useDispatch } from "react-redux";
+import { login } from "./feature/UserSlice";
 export default function Login(){
     const[name,setname]=useState("");
     const[email,setmail]=useState("");
@@ -10,13 +11,9 @@ export default function Login(){
     const validEmail = new RegExp(
         '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
      );
+     const dispatch=useDispatch();
     
-    const save=()=>{
-        
-        sessionStorage.setItem('UserName', name);
-        sessionStorage.setItem('Email',email);
-        sessionStorage.setItem('Password', password);
-    }
+ 
 
   
  const toggle=()=>{
@@ -32,7 +29,15 @@ export default function Login(){
      
      
  }
-   
+   const handleSubmit=(e)=>{
+        e.preventDefault();
+        dispatch(login({
+             name:name,
+             email:email,
+             password:password,
+             loggedin:true
+        }))
+   }
     
  
 return(
@@ -62,8 +67,8 @@ return(
   
   <br/>
   
-  <Button className="bg-primary" type="submit" onClick={save} >save</Button>
-  <Button className="bg-primary"  onClick={toggle} >Login</Button>
+  <Button className="bg-primary" type="submit" onClick={(e)=>handleSubmit(e)} >Login</Button>
+  <Button className="bg-primary"  onClick={toggle} >SHOW</Button>
  
 </Form>
 
