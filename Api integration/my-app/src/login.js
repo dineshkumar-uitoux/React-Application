@@ -1,7 +1,8 @@
+import React from "react";
 import { useState } from "react"
 import { Button, Form, Input,Label,FormGroup, Modal,ModalHeader,ModalBody,ModalFooter } from 'reactstrap';
-import { useDispatch } from "react-redux";
-import { login } from "./feature/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "./feature/UserSlice";
 export default function Login(){
     const[name,setname]=useState("");
     const[email,setmail]=useState("");
@@ -12,7 +13,7 @@ export default function Login(){
         '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
      );
      const dispatch=useDispatch();
-    
+     const user=useSelector(selectUser);
  
 
   
@@ -64,7 +65,12 @@ return(
 
   </FormGroup>
   <br/>
-  
+  <FormGroup>
+    
+  <Input type="checkbox" ></Input>  <Label>I agree</Label>
+
+
+  </FormGroup>
   <br/>
   
   <Button className="bg-primary" type="submit" onClick={(e)=>handleSubmit(e)} >Login</Button>
