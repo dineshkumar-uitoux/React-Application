@@ -3,8 +3,8 @@ export const userSlice = createSlice(
     {
         name: 'user',
         initialState: {
-            user: null
             
+            users: []
              
         },
         reducers: {
@@ -14,13 +14,26 @@ export const userSlice = createSlice(
             logout: (state) => {
                 state.user = null;
             },*/
-            employer: (state, action) => {
-                state.user = action.payload;
-            }
 
-        },
+            //dispatch(userslice.rempoveEmployee("emp2"))
+            employer: (state, action) => {
+                
+                    state.user = action.payload
+                
+            
+            },
+            addEmployers: (state, action) =>{
+                state.users.push(action.payload)
+            },
+            removeEmployee: (state, action) => {
+                let AllEmployees = [...state.users]
+                AllEmployees.filter((employee) => employee.name !== action.payload)
+            
+
+        }
+    }
     }
 );
-export const { login, logout, employer } = userSlice.actions;
-export const selectUser = (state) => state.user.user;
+export const { login, logout, employer,addEmployers} = userSlice.actions;
+export const selectUser = (state) => state.user.users;
 export default userSlice.reducer;

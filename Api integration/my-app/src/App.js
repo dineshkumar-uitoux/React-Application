@@ -6,6 +6,7 @@ import { selectUser } from './feature/UserSlice.js';
 import Logout from './logout.js';
 import EmployerForm from './employerform.js';
 import { Container, Row, Col } from 'reactstrap';
+import DataTable from './datatable.js';
 
 export default function App() {
     const user = useSelector(selectUser);
@@ -21,9 +22,11 @@ export default function App() {
     </Col>*/}
 
 
-                    <Col><div className='employerform'><EmployerForm /></div></Col>
+                    <Col><div ><EmployerForm /></div></Col>
+                   {/*<Col><div ><DataTable /></div></Col>*/} 
                 </Row>
             </Container>
+            
         </div>
     )
 }
