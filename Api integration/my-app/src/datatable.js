@@ -5,17 +5,17 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { employer, selectUser } from "./feature/UserSlice";
 import { useSelector,useDispatch } from "react-redux";
 import { Button } from 'reactstrap';
-export default function DataTable(checked){
-  
+export default function DataTable(){
+  const users=useSelector(selectUser);
     return(
-      <div className="ag-theme-alpine" style={{height: 400, width: 900}}>
-           <AgGridReact 
-               >
+      <div className="ag-theme-alpine" style={{height: 400, width: 600}}>
+           <AgGridReact rowData={users} >
+              
                <AgGridColumn field="name"></AgGridColumn>
                <AgGridColumn field="email"></AgGridColumn> 
-             
+               <AgGridColumn field="age"></AgGridColumn>
            </AgGridReact>
-          {/*<Button onClick={e=>setRowData([{name:name,email:mail}])}>add</Button> */}
+          
        </div>
     )
 

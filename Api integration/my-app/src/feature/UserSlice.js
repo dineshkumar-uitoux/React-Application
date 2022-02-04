@@ -26,14 +26,13 @@ export const userSlice = createSlice(
                 state.users.push(action.payload)
             },
             removeEmployee: (state, action) => {
-                let AllEmployees = [...state.users]
-                AllEmployees.filter((employee) => employee.name !== action.payload)
-            
+              
+                state.users.pop();
 
         }
     }
     }
 );
-export const { login, logout, employer,addEmployers} = userSlice.actions;
+export const { login, logout, employer,addEmployers,removeEmployee} = userSlice.actions;
 export const selectUser = (state) => state.user.users;
 export default userSlice.reducer;

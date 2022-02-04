@@ -2,11 +2,11 @@ import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, FormGroup, Label, Input, Button, Container, Row, Col, Modal, ModalHeader, ModalBody } from "reactstrap"
 import DataTable from "./datatable.js";
-import { addEmployers, selectUser } from './feature/UserSlice.js';
+import { addEmployers, selectUser,removeEmployee } from './feature/UserSlice.js';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import { AgSelect } from "ag-grid-community";
+
 
 const Skillset = ({ handleInputChange }) => {
 
@@ -25,12 +25,12 @@ export default function EmployerForm(props) {
     const dispatch = useDispatch();
     const [checkerr, setCheckerr] = useState(false);
     const [nameerr, setnameerr] = useState(false);
-    const[age,setAge]=useState('')
+    const [age, setAge] = useState('')
     const [mail, setMail] = useState();
     const [modal, setmodal] = useState(false);
     const [workField, setWorkField] = useState()
     //const [inputList, setInputList] = useState([ skills: "" }]);
-    
+
     const [skills, setSkills] = useState([{ skills: "" }]);
     const users = useSelector(selectUser)
 
@@ -42,7 +42,7 @@ export default function EmployerForm(props) {
 
     const send = (e) => {
         if (!check) {
-            
+
             setCheckerr(true);
             setmodal(modal);
             e.preventDefault();
@@ -53,7 +53,7 @@ export default function EmployerForm(props) {
 
             name: name,
             email: mail,
-            age:age
+            age: age
 
         }))
         setmodal(!modal);
@@ -132,7 +132,7 @@ export default function EmployerForm(props) {
                                 <Label>
                                     Age
                                 </Label>
-                                <Input type='text' value={age} onChange={(e)=>setAge(e.target.value)}></Input>
+                                <Input type='text' value={age} onChange={(e) => setAge(e.target.value)}></Input>
 
                             </FormGroup>
                             <FormGroup>
@@ -195,19 +195,12 @@ export default function EmployerForm(props) {
                 </div>
 
             </Modal>
-
-            {/*<DataTable rowData={Data}/>*/}
-
             <div>
-                <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
-                    <AgGridReact rowData={users}>
+               
+              <DataTable/>
 
-                        <AgGridColumn field="name"></AgGridColumn>
-                        <AgGridColumn field="email"></AgGridColumn>
-                        <AgGridColumn field="age"></AgGridColumn>
-                    </AgGridReact>
-
-                </div>
+            <Button onClick={()=>dispatch(removeEmployee())}>Remove</Button>
+                
 
             </div>
 
