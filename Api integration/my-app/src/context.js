@@ -7,7 +7,9 @@ export default function Context() {
   const [user, setUser] = useState("Dineshkumar");
 
   return (
+      
     <UserContext.Provider value={user}>
+        <h1>useContext Example</h1>
       <h1>{`Hello ${user}!`}</h1>
       <Child user={user} />
     </UserContext.Provider>
