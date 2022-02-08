@@ -9,7 +9,7 @@ export default function Example() {
     setTimeout(() => {
       setTime((time) => time+ 1);
     }, 1000);
-  },[]);
+  },[value]);
  
 const memo=()=>{
   console.log('memoized')

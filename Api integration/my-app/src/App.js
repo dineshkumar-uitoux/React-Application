@@ -11,28 +11,32 @@ import Example from './example.js';
 import MemoExample from './memoExample.js';
 
 import Context from './context.js';
+import Parent from './parent.js';
+import FormContext from './FormContext.js';
 export default function App() {
     const user = useSelector(selectUser);
 
     return (
-        <div>
 
-            <Container>
-                <Row>
-                  {/*} <Col>
-                        <div className='App'>
-                            {user ? <Logout /> : <Login />}</div>
-    </Col>*/}
+        <> 
+        <Container>
+            <Row>
 
 
-                    <Col><div ><EmployerForm /></div></Col>
-                    <Col><Example/></Col>
-                    <Col><MemoExample/></Col>
-                    <Col><Context/></Col>
-                   
-                </Row>
-            </Container>
-            
-        </div>
+
+                <Col><div ><EmployerForm /></div></Col>
+                <Col><Example /></Col>
+                <Col><MemoExample /></Col>
+                <Col><Context /></Col>
+                
+            </Row>
+            <Row>
+                <Parent/>
+                <FormContext/>
+            </Row>
+        </Container>
+        </>
+
+
     )
 }
