@@ -9,18 +9,28 @@ import { Container, Row, Col } from 'reactstrap';
 import DataTable from './datatable.js';
 import Example from './example.js';
 import MemoExample from './memoExample.js';
-
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+} from 'react-router-dom';
 import Context from './context.js';
 import Parent from './parent.js';
-import FormContext from './FormContext.js';
+import NavTab from './NavTab.js';
+
 export default function App() {
     const user = useSelector(selectUser);
 
     return (
+        <>
+            <Router>
 
-        <> 
-        <Container>
-            <Row>
+
+                {/*<Row>
 
 
 
@@ -29,14 +39,20 @@ export default function App() {
                 <Col><MemoExample /></Col>
                 <Col><Context /></Col>
                 
-            </Row>
-            <Row>
-                <Parent/>
-                <FormContext/>
-            </Row>
-        </Container>
-        </>
+            </Row>*/}
 
+                <NavTab />
+                <Routes>
+                    <Route exact path='/' element={< Home />}></Route>
+                    <Route exact path='/about' element={< About />}></Route>
+                    <Route exact path='/contact' element={< Contact />}></Route>
+                </Routes>
+               
+
+            </Router>
+
+
+        </>
 
     )
 }
