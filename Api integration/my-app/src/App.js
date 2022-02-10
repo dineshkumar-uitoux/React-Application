@@ -21,6 +21,7 @@ import {
 import Context from './context.js';
 import Parent from './parent.js';
 import NavTab from './NavTab.js';
+import CustomHook from './CustomHook.js';
 
 export default function App() {
     const user = useSelector(selectUser);
@@ -30,16 +31,7 @@ export default function App() {
             <Router>
 
 
-                {/*<Row>
-
-
-
-                <Col><div ><EmployerForm /></div></Col>
-                <Col><Example /></Col>
-                <Col><MemoExample /></Col>
-                <Col><Context /></Col>
-                
-            </Row>*/}
+              
 
                 <NavTab />
                 <Routes>
@@ -50,6 +42,16 @@ export default function App() {
                
 
             </Router>
+            
+<CustomHook/>
+
+
+{/*<EmployerForm />
+<Example />
+<MemoExample />
+<Context />*/}
+
+
 
 
         </>
