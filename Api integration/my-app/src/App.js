@@ -29,31 +29,13 @@ export default function App() {
     return (
         <>
             <Router>
-
-
-              
-
                 <NavTab />
                 <Routes>
                     <Route exact path='/' element={< Home />}></Route>
                     <Route exact path='/about' element={< About />}></Route>
                     <Route exact path='/contact' element={< Contact />}></Route>
                 </Routes>
-               
-
-            </Router>
-            
-<CustomHook/>
-
-
-{/*<EmployerForm />
-<Example />
-<MemoExample />
-<Context />*/}
-
-
-
-
+            </Router>{/*<EmployerForm /><Example /><MemoExample /><Context /><CustomHook/>*/}
         </>
 
     )

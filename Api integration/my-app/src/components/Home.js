@@ -3,15 +3,24 @@ import { Link } from 'react-router-dom';
 import { Col, Row, Container, Button } from 'reactstrap';
 import About from './About';
 import Contact from './Contact';
+import styled from 'styled-components';
+const Div=styled.div`
+
+
+background-color:#f2d9aa
+
+
+`
 
 function Home() {
     return (
-        
-            <div>
-            <Container >
+        <>
+           <Div>  
+            <Container style={{height:'100vh'}} >
+               
                 <Row style={{ textAlign: 'center' }}>
                     <Col style={{ marginTop: 200 }}>
-                        <h1 style={{fontSize:50}}>Welcome</h1>
+                        <h1 style={{fontSize:50,color: '#031c40,',fontWeight:'bolder'}}>Welcome</h1>
                         <p style={{fontSize:30}}> Lorem ipsum odor amet, consectetuer adipiscing elit. Ac purus in massa egestas mollis varius;
                             dignissim elementum.
                         </p>
@@ -20,10 +29,14 @@ function Home() {
 
                     </Col>
                 </Row>
-                <About/>
-                <Contact/>
+               
+                
             </Container>
-            </div>
+          </Div>   
+            <About/>
+                <Contact/>
+                </>
+            
     );
 }
 
